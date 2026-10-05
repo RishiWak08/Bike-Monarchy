@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike Monarchy</title>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0d0d0d;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/*NAVBAR  */
+
+header {
+    position: sticky;
+    top: 0;    
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 25px;
+
+}
+
+.logo {
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.logo span {
+    color: rgb(88, 87, 87);
+}
+
+.nav-links {
+    display: flex;
+    gap: 35px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: rgb(163, 163, 163);
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: white;
+}
+
+.nav-button {
+    padding: 10px 20px;
+    border: 2px solid grey;
+    font-size: 20px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.nav-button:hover {
+    background: white;
+    color: black;
+}
+
+
+/* ================= HERO ================= */
+
+.hero {
+    max-width: 1200px;
+    min-height: 650px;
+    margin: auto;
+    padding: 70px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.hero-content {
+    width: 50%;
+    animation: slideUp 1s ease;
+}
+
+.small-heading {
+    color: #999;
+    font-size: 13px;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-size: clamp(50px, 7vw, 90px);
+    line-height: 0.95;
+    margin-bottom: 30px;
+}
+
+.hero h1 span {
+    color: #585858;
+}
+
+.hero-text {
+    max-width: 500px;
+    color: #aaa;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.primary-button,
+.secondary-button {
+    display: inline-block;
+    padding: 14px 25px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.primary-button {
+    background: rgb(65, 64, 64);
+}
+
+.primary-button:hover {
+    transform: translateY(-4px);
+    background-color: white;
+    color: black;
+}
+
+.secondary-button {
+    border: 2px solid #444;
+}
+
+.secondary-button:hover {
+    background: white;
+    color: black;
+}
+
+
+/* ================= HERO IMAGE ================= */
+
+.hero-image {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    animation: bikeAppear 1.2s ease;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 600px;
+    transition: transform 0.5s ease;
+}
+
+.hero-image img:hover {
+    transform: scale(1.05) rotate(-2deg);
+}
+
+
+/* ================= BIKES ================= */
+
+.bikes-section,
+.categories-section {
+    max-width: 1200px;
+    margin: auto;
+    padding: 80px 25px;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 40px;
+}
+
+.section-heading h2 {
+    font-size: 55px;
+    color: rgb(126, 125, 125);
+}
+
+.view-all {
+    color: #aaa;
+    transition: 0.3s;
+}
+
+.view-all:hover {
+    color: white;
+}
+
+
+/* ================= BIKE CARDS ================= */
+
+.bike-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.bike-card {
+    background: #151515;
+    border: 1px solid #252525;
+    border-radius: 12px;
+    overflow: hidden;
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.bike-card:hover {
+    transform: translateY(-10px);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: #9b9898;
+}
+
+.bike-image {
+    height: 250px;
+    overflow: hidden;
+    background: #1b1b1b;
+}
+
+.bike-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+}
+
+.bike-card:hover .bike-image img {
+    transform: scale(1.08);
+}
+
+.bike-info {
+    padding: 25px;
+}
+
+.bike-category {
+    color: rgb(150, 150, 150);
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.bike-info h3 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.bike-specs {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.bike-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bike-bottom strong {
+    font-size: 18px;
+}
+
+.bike-bottom button {
+    background-color: rgb(37, 37, 37);
+    color: white;
+    border: 1px solid #444;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.bike-bottom button:hover {
+    background: white;
+    color: black;
+}
+
+
+/* ================= CATEGORIES ================= */
+
+.categories-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.category-card {
+    min-height: 180px;
+    padding: 25px;
+    background: #151515;
+    border: 2px solid #252525;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: 0.3s;
+}
+
+.category-card:hover {
+    transform: translateY(-8px);
+    border-color: rgb(177, 177, 177);
+}
+
+.category-card h3 {
+    font-size: 25px;
+}
+
+.category-card p {
+    color: #777;
+    font-size: 20px
+}
+
+.category-card a {
+    color: rgb(255, 255, 255);
+}
+
+
+/* ================= CTA ================= */
+
+.cta {
+    
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 80px 50px;
+    border-radius: 15px;
+    background: #171717;
+    text-align: center;
+    background: url("https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c3BvcnRzJTIwYmlrZXxlbnwwfHwwfHx8MA%3D%3D");
+    background-size: cover;
+    background-position: center;
+}
+
+.cta h2 {
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+    border-top: 1px solid #222;
+    padding: 50px 25px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-content h2 {
+    letter-spacing: 3px;
+}
+
+.footer-content p {
+    color: #777;
+    margin-top: 10px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 25px;
+}
+
+.footer-links a {
+    color: #777;
+    transition: 0.3s;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.copyright {
+    max-width: 1200px;
+    margin: 50px auto 0;
+    color: #555;
+    font-size: 13px;
+}  
+
+/* ============= Animations ================= */
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes bikeAppear {
+    from {
+        opacity: 0;
+        transform: translateX(80px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+/* ========= Media query ========== */
+
+@media (max-width: 900px) {
+    .nav-links {
+        gap: 15px;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-content,
+    .hero-image {
+        width: 100%;
+    }
+
+    .hero-text {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .bike-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .categories-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero {
+        padding-top: 40px;
+    }
+
+    .hero h1 {
+        font-size: 50px;
+    }
+
+    .bike-container {
+        grid-template-columns: 1fr;
+    }
+
+    .categories-container {
+        grid-template-columns: 1fr;
+    }
+
+    .section-heading h2 {
+        font-size: 35px;
+    }
+
+    .cta h2 {
+        font-size: 35px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo"><i>//Bike<span>Monarchy</span>//</i></div>
+
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#bikes">Bikes</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+
+            <a href="#bikes" class="nav-button">Explore</a>
+        </nav>
+    </header>
+
+   
+    <main>
+        <!--Hero-->
+        <section class="hero">
+            <div class="hero-content">
+                <p class="small-heading">RIDE FOR PASSION</p>
+                <h1>FIND YOUR<br><span>PERFECT<br>BIKE</span></h1>
+                <p class="hero-text">
+                    Explore powerful machines, discover new rides
+                    and find the bike that matches your style.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#bikes" class="primary-button">Explore</a>
+                    <a href="#categories" class="secondary-button">View Categories</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://i.etsystatic.com/6744532/r/il/22a0a7/2771992519/il_570xN.2771992519_q8kh.jpg" alt="bike-image">
+            </div>
+        </section>
+
+        <!--Bike Section-->
+        <section class="bikes-section" id="bikes">
+
+            <div class="section-heading">
+
+                <div>
+                    <p class="small-heading">
+                        <i>OUR COLLECTION</i>
+                    </p>
+                    <h2><i>Featured Bikes</i></h2>
+                </div>
+                <a href="#" class="view-all">
+                    View All →
+                </a>
+
+            </div>
+
+
+            <div class="bike-container">
+
+
+                <!-- Bike Card 1 -->
+
+                <article class="bike-card">
+
+                    <div class="bike-image">
+                        <img src="https://suspensionmoto.com/cdn/shop/articles/S1-noir-sur-noir-pour-la-ducati-panigale-v2-2024-758553.jpg?v=1689154714" alt="Ducati Panigale V4">
+                    </div>
+
+                    <div class="bike-info">
+                        <p class="bike-category"><i>SPORTS</i></p>
+                        <h3>Ducati Panigale V4</h3>
+                        <p class="bike-specs">1103cc • 120 HP • 120.9 Nm</p>
+
+                        <div class="bike-bottom">
+                            <strong>₹29.9 Lakhs</strong>
+                            <button>View</button>
+                        </div>
+                    </div>
+
+                </article>
+
+
+                <!-- Bike Card 2 -->
+
+                <article class="bike-card">
+
+                    <div class="bike-image">
+                        <img src="https://www.motorbeam.com/wp-content/uploads/KTM-390-Adventure-R.jpg" alt="KTM 390 Adventure">
+                    </div>
+
+                    <div class="bike-info">
+                        <p class="bike-category"><i>ADVENTURE</i></p>
+                        <h3>KTM 390 Adventure</h3>
+                        <p class="bike-specs">390cc • 45 HP • 33.5 Nm</p>
+
+                        <div class="bike-bottom">
+                            <strong>₹5.6 Lakhs</strong>
+                            <button>View</button>
+                        </div>
+                    </div>
+
+                </article>
+
+
+                <!-- Bike Card 3 -->
+
+                <article class="bike-card">
+
+                    <div class="bike-image">
+                        <img src="https://mcn-images.bauersecure.com/wp-images/4683/600x400/enfield-continental-gt-01.jpg" alt="GT 650">
+                    </div>
+
+                    <div class="bike-info">
+                        <p class="bike-category"><i>CRUISER</i></p>
+                        <h3>GT 650</h3>
+                        <p class="bike-specs">650cc • 47HP • 52 Nm</p>
+
+                        <div class="bike-bottom">
+                            <strong>₹5 Lakhs</strong>
+                            <button>View</button>
+                        </div>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <!--Categories-->
+        <section class="categories-section" id="categories">
+            <div class="section-heading">
+                <div>
+                    <p class="small-heading"><i>Find Your Style</i></p>
+                    <h2><i>Bike Categories</i></h2>
+                </div>
+            </div>
+
+            <div class="categories-container">
+                <div class="category-card">
+                    <h3>Sports</h3>
+                    <p><i>Speed and performance.</i></p>
+                    <a href="#">Explore →</a>
+                </div>
+
+                <div class="category-card">
+                    <h3>Naked</h3>
+                    <p><i>Raw and Sketchy.</i></p>
+                    <a href="#">Explore →</a>
+                </div>
+
+                <div class="category-card">
+                    <h3>Cruiser</h3>
+                    <p><i>Make it Easy to Ride.</i></p>
+                    <a href="#">Explore →</a>
+                </div>
+
+                <div class="category-card">
+                    <h3>Adventure</h3>
+                    <p><i>OFF the Roads.</i></p>
+                    <a href="#">Explore →</a>
+                </div>
+            </div>
+        </section>
+
+        <!--CTA-->
+        <section class="cta" id="about">
+            <div>
+
+                <p class="small-heading"><i>READY TO RIDE?</i></p>
+                <h2>''Your Adventure<br>Starts Here''</h2>
+                <a href="#bikes" class="primary-button">Explore Bikes</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!--Footer-->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div>
+                <h2>//Bike Monarchy//</h2>
+                <p>Discover. Compare. Ride.</p>
+            </div>
+
+            <div class="footer-links">
+                <a href="#">Home</a>
+                <a href="#bikes">Bikes</a>
+                <a href="#categories">Categories</a>
+                <a href="#about">About</a>
+            </div>
+
+        </div>
+
+        <p class="copyright">
+            © 2026 BIKE MONARCHY. All rights reserved.
+        </p>
+
+    </footer>
+</body>
+
+</html>
